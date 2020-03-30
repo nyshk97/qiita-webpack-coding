@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -75,5 +76,6 @@ module.exports = {
       template: './src/templates/index.pug',
       filename: 'index.html',
     }),
+    new CleanWebpackPlugin(),
   ],
 };
