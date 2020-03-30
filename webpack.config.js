@@ -1,9 +1,10 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const globule = require('globule')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-module.exports = {
+const app = {
   mode: 'production',
   // devtool: 'eval-source-map',
   entry: {
@@ -72,10 +73,26 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: './stylesheets/[name]-[hash].css',
     }),
-    new HtmlWebpackPlugin({
-      template: './src/templates/index.pug',
-      filename: 'index.html',
-    }),
     new CleanWebpackPlugin(),
   ],
 };
+
+const templates = globule.find(
+  './src/templates/**/*.pug', {
+    ignore: [
+      './src/templates/**/_*.pug'
+    ]
+  }
+)
+
+templates.forEach((template) => {
+  const fileName = template.replace('./src/templates/', '').replace('.pug', '.html')
+  app.plugins.push(
+    new HtmlWebpackPlugin({
+      filename: `${fileName}`,
+      template: template,
+    })
+  )
+})
+
+module.exports = app
