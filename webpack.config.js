@@ -14,6 +14,10 @@ const app = {
     path: path.resolve(__dirname, './dist'),
     filename: 'javascripts/[name]-[hash].js',
   },
+  performance: {
+    maxEntrypointSize: 500000,
+    maxAssetSize: 500000,
+  },
   module: {
     rules: [
       {
