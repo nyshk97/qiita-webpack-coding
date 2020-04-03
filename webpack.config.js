@@ -51,7 +51,7 @@ const app = {
             options: {
               esModule: false,
               name: 'images/[name]-[hash].[ext]',
-              publicPath: '/',
+              publicPath: path => '../' + path,
             },
           },
           {
@@ -83,7 +83,7 @@ const app = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './stylesheets/[name]-[hash].css',
+      filename: 'stylesheets/[name]-[hash].css',
     }),
     new CleanWebpackPlugin(),
   ],
