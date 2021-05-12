@@ -25,7 +25,7 @@
     "postcss-loader": "^3.0.0",
     "pug-html-loader": "^1.1.5",
     "sass-loader": "^8.0.2",
-    "swiper": "^5.3.6",
+    "swiper": "^6.5.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
